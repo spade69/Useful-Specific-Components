@@ -1,0 +1,19 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+     <script type="text/javascript" src="event.js" defer="defer"></script>
+  </head>
+<body onclick="alert('current is body');">
+	<div id="div0" onclick="alert('current is'+this.id);">
+		<div id="div1" onclick="alert('current is'+this.id);">
+			<div id="div2" onclick="alert('current is'+this.id);">
+				<div id="event_Source" onclick="alert('current is'+this.id);"
+				style="height:200px;width:200px;background-color:red;"></div>
+			
+			</div>
+		</div>
+	</div>
+</body>
+</html>
