@@ -25,7 +25,7 @@ var EventUtil={
 	},
 	
 	getTarget:function(event){
-		return event.taget||event.srcElement;//target是一个元素节点对象
+		return event.taget||event.srcElement;
 	},
 	
 	//取消浏览器事件后的默认执行

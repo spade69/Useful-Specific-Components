@@ -101,7 +101,7 @@ function delBtnHandle() {
 				//alert("yes");
 			//如何通过捕捉这个事件来删除数组aqi-data的数据 
 			var item=target.parentNode.parentNode;//tr
-			var show=target.parentNode.parentNode.childNodes[0].textContent;//tagName
+			var show=item.childNodes[0].textContent;//tagName
 	
 			for(var city in aqiData){
 				if(city==show)

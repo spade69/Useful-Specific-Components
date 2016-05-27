@@ -101,7 +101,7 @@ function renderChart() {
 	context.fillText("Weather",0,leftY/2);
 	context.fillText("Date",rightX/2,leftY+50);
 	
-	
+	for
 	context.fillRect(baseX+5,leftY,10,-200);
 	context.fillRect(baseX+50,leftY,10,-200);
 	
