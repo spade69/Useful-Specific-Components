@@ -84,15 +84,15 @@
 	}
 	
 	//冒泡排序
-	var o={
-	bubble_sort:function(){
+	//var o={
+	function bubble_sort(){
 		if(arr.length<=1)
 			return;
 		for(var i=0;i<arr.length;i++)
 		{
 			for(var j=i;j<arr.length;j++)
 			{
-				if(arr[i]<arr[j]){
+				if(arr[i]>arr[j]){
 					var tmp=arr[i];				
 					arr[i]=arr[j];
 					arr[j]=tmp;
@@ -101,7 +101,7 @@
 		}
 		refresh();
 	}
-	};
+	//};
 	
 	//可视化快排
 	function quick_sort(){
@@ -113,7 +113,7 @@
 		var bs=document.getElementById("bubble");
 		delBtnHandle();
 		//EventUtil.addHandler(bs,"click",bubble_sort(event));
-		bs.addEventListener("click",o,"false");
+		bs.addEventListener("click",bubble_sort,"false");
 	}
 
 	var div=document.getElementById("div");
@@ -170,6 +170,7 @@
 		}
 		
 		var num=parseInt(txtval);// string 转Number
+		arr.reverse();
 		arr.push(num);
 		arr.reverse();
 		
@@ -190,6 +191,7 @@
 		arr.reverse();
 		var txtval=arr.pop();
 		alert(txtval);
+		arr.reverse();
 		
 		refresh();
 		
