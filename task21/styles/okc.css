@@ -1,0 +1,38 @@
+body{
+	font-family:"Georgia","sans-serif";
+	
+	background-color:#fef;
+	margin:1em 30%;
+}
+
+
+.b1{
+	color:yellow;
+	background-color:green;	
+	
+}
+
+#tags>button{
+    border-radius: 4px;
+    padding: 0 20px;
+	margin:2px;
+    height: 44px;
+    line-height: 44px;
+	color: #ffffff;
+	background-color: #4976a4;
+	border-color: transparent;
+	box-shadow: 0 2px 0 #94bfe4;
+}
+
+#interests>button{
+	border-radius: 4px;
+    padding: 0 20px;
+	margin:2px;
+    height: 44px;
+    line-height: 44px;
+	color: #ffffff;
+	background-color: #ff563f;
+	border-color: transparent;
+	box-shadow: 0 2px 0 #94bfe4;
+	
+}

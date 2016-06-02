@@ -32,16 +32,22 @@
 		});
 		arr=arr.concat(arrWord);//把字符串连接在一起。
 		
-		render(); //刷新页面
+		render(); //
 	}
 	
-	//匹配字符
+	//
 	//$()
-
+	$('#query').onclick=function(){
+		var strx=$('#search').value.trim();
+		//alert(strx);
+		render(strx);
+	}
 	
-	function render(str){
+	
+	function render(str){ ///匹配字符并显示 or bu匹配直接显示
 		$('#result').innerHTML=arr.map(function(d){
 			if(str!=null&&str.length>0){
+				//replace查询到的内容(用正则表达式查询)，然后替换为后面的参数。
 				d=d.replace(new RegExp(str,"g"),"<span class='select'>"+str+"</span>");
 				
 			}
