@@ -22,6 +22,7 @@
 	*******/
 var createTag=(function(){
 	
+	//_tag 这就算一个主函数了，里面都是控制程序的逻辑。
 	function _tag(input,output,button){
 		//private var
 		var numberx; //记录tag 个数
@@ -63,6 +64,7 @@ var createTag=(function(){
 			numberx++;
 		};
 		
+		//以下相当于调用了
 		//构造器
 		this.setNumber(0);
 		//初始化

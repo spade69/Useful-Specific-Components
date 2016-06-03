@@ -1,0 +1,39 @@
+
+body{
+	font-family:"Georgia","sans-serif";
+	
+	background-color:#fef;
+	margin:1em 30%;
+}
+
+.flex-container{
+	display:-webkit-flex;
+	display:flex;
+	width:400px;
+	height:250px;
+}
+
+
+.flex-item{
+    border-radius: 4px;
+    padding: 0 20px;
+	margin:2px;
+    height: 44px;
+    line-height: 44px;
+	color: #ffffff;
+	background-color: #4976a4;
+	border-color: transparent;
+	box-shadow: 0 2px 0 #94bfe4;
+}
+
+#traverse{
+    border-radius: 4px;
+    padding: 0 20px;
+	margin:2px;
+    height: 44px;
+    line-height: 44px;
+	color: #ffffff;
+	background-color: #4976a4;
+	border-color: transparent;
+	box-shadow: 0 2px 0 #94bfe4;
+}
