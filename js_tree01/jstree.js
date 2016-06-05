@@ -56,7 +56,7 @@
 						 setTimeout(function(){//闭包b
 						arry[arr[i]].style.backgroundColor="#FFFFFF";
 						i++;
-						
+						callback();
 					},1000);
 					
 					
