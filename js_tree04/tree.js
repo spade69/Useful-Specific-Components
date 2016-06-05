@@ -173,7 +173,10 @@
 	
 	//=======================================以上是封装TreeNode的代码=============================================
 
+
 //=============================================事件绑定区===============================================
+//以下是实际按顺序执行的代码，创建对象以及绑定事件，还有创建剩余的DOM元素
+
 //创建根节点对应的Treenode对象
 var root=new TreeNode({parent:null,childs:[],data:"front-end engineer",selfElement:document.getElementsByClassName("nodebody-visible")[0]});
 //为root绑定事件
