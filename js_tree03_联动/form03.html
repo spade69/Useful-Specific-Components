@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证03联动</title>
+	<script type="text/javascript" src="form3.js" defer="true"></script>	
+</head>
+<body>
+
+<br>
+
+学生类别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+<div id="radio-select" onchange="radioChange()">
+<input type="radio" name="student" id="inSchool" checked>在校生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="student" id="offSchool" >非在校生<br>
+</div>
+
+
+<div id="din">
+<span>学校</span>
+<select class="select" id="select1" onchange="vswitch()">
+	
+</select>
+<select class="select" id="selectx">
+</select>
+
+</div>
+
+<br>
+
+<div id="doff"></div>
+<br>
+</body>
+</html>
