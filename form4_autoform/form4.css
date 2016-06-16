@@ -1,0 +1,30 @@
+.formx{
+	display:block;
+
+	width:400px;
+}
+
+.necessary{
+	display:block;
+	width:400px;
+}
+
+.text{
+	display:block;
+	width:400px;
+	position:absolute;
+	top:240px;
+}
+
+#showform{
+	position: absolute;
+	left:500px;
+	top:10px;
+}
+
+#length{
+	display:block;
+	position:absolute;
+	top:240px;
+
+}

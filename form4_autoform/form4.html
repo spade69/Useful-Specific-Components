@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证04</title>	
+	<script type="text/javascript" src="addtag.js" defer="true"></script>
+	<script type="text/javascript" src="form4.js" defer="true"></script>	
+	<link type="text/css" rel="stylesheet" href="form4.css">
+</head>
+<body>
+<aside id="form_data_set">
+
+<form id="data_create">
+<fieldset class="formx" id="form_type" onchange="radioChange()">
+	<legend>表单类型</legend>
+	输入框<input type="radio" value="input" name="type" checked="checked"><br>
+	单选框<input type="radio" value="single" name="type"><br>
+	多选框<input type="radio" value="multi" name="type"><br>
+	下拉框<input type="radio" value="select" name="type"><br>
+	文本域<input type="radio" value="textarea" name="type"><br>
+</fieldset>
+<br>
+
+<fieldset class="necessary" id="set_form">
+<legend>表单配置</legend>
+名称：<input type="text" id="name"><br>
+
+类别<select id="css_style">
+<option value="css1">必填</option>
+<option value="css2">选填</option>
+</select>
+
+
+样式
+<select>
+<option value="css1">样式1</option>
+<option value="css2">样式2</option>
+</select>
+</fieldset>
+<br>
+
+<fieldset id="form_box" class='formx'>
+<legend>选项</legend>
+<input id="box_input" type="text" style="width:200px" placeholder="请用空格，逗号，回车来分隔选项">
+<span id="box_item"></span>
+
+<div id="tags">
+
+</div>
+</fieldset>
+<br>
+
+<br>
+
+<fieldset id="rule" class="text" onchange="ruleradio()">
+	<legend>规则</legend>
+	<input id="word" type="radio" value="msg" name="rule">
+	<label for="word">文字</label>
+	<input id="number" type="radio" value="number" name="rule">
+	<label for="number">数字</label>
+	<input id="email" type="radio" value="mail" name="rule">
+	<label for="email">邮箱</label>
+	<input id="phone" type="radio" value="phone" name="rule">
+	<label for="phone">电话</label>
+	<input id="password" type="radio" value="passwd" name="rule">
+	<label for="password">密码</label>
+</fieldset>
+<br>
+<fieldset id="length" class='formx'>
+	<legend>长度限制</legend>
+	<label for="length">字符范围</label>
+	<input id="low" type="number" min="0" value="4" style="width:50px">---
+	<input id="high" type="number" min="1" value="16" style="width:50px">
+</fieldset>
+
+	 <button id="btn_add" type="button">add</button>
+</form>
+
+</aside>
+
+<div id="showform">
+    <h1 id="title">表单展示区</h1>
+    <form id="result" class="style1">
+        <button type="button" id="submit_form">提交</button>
+        <input type="text" class="hide">
+    </form>
+</div>
+
+
+
+<br>
+
+</body>
+</html>
