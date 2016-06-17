@@ -37,6 +37,12 @@ $=function(e1){
 
 
 
+function prevent(event){
+	if(event.keyCode==13){
+	//alert("fuck");
+	return false;
+	}
+}
 
 //switch form
 function sform(element)
@@ -48,6 +54,8 @@ function sform(element)
 //switch the student type
 function radioChange(){
 	var item=$('#form_type').getElementsByTagName('input');
+	var xlen=$('#length');	
+	xlen.style.top="240px";
 	for(var i=0;i<item.length;i++){
 		if(item[i].checked){
 			switch(item[i].value){
@@ -79,12 +87,16 @@ function ruleradio(){
 	var item=$('#rule').getElementsByTagName('input');
 	for(var i=0;i<item.length;i++){
 		if(item[i].checked){
+			var xlen=$('#length');	
 			if(item[i].value==="msg"||item[i].value==="passwd")
 			{
-				$('#length').style.display="block";
+				
+				xlen.style.display="block";
+				xlen.style.top="300px";
 			}
 			else{
-				$('#length').style.display="none";
+				xlen.style.display="none";
+				xlen.style.top="240px";
 			}
 		}
 	}
@@ -93,6 +105,8 @@ function ruleradio(){
 
 //initialize module
 radioChange();
-
+$('#form_type').addEventListener('change',radioChange);
+//radioChange();
+$('#rule').addEventListener('change',ruleradio);
 //实例化 tag 
-var xtag=new createTag('box_input','tags');
+var xtag=new createTag('tag','tags');

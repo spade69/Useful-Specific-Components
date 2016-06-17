@@ -124,7 +124,7 @@ var createTag=(function(){
 					//正则表达式 字面量： /(,||\,)$/
 					if(event.keyCode==188||event.keyCode==32||event.keyCode===13){
 						//console.log(self.getData());
-						self.repeatData(self.getData().trim())||self.render(self.getData().trim());
+						self.repeatData(self.getData())||self.render(self.getData());
 						self.input.value='';
 						//不能超过10
 						if(self.getNumber()>10){
@@ -155,5 +155,5 @@ var createTag=(function(){
 
 //实例化 tag 
 var tag=new createTag('tag','tags');
-var hobby=new createTag('txtarea','interests','confirm');
+//var hobby=new createTag('txtarea','interests','confirm');
 

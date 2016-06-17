@@ -1,12 +1,15 @@
 .formx{
 	display:block;
-
 	width:400px;
 }
 
 .necessary{
 	display:block;
 	width:400px;
+}
+
+.hide{
+	display: none;
 }
 
 .text{
@@ -26,5 +29,12 @@
 	display:block;
 	position:absolute;
 	top:240px;
+}
 
+.btnx{
+	position:absolute;
+	top:380px;
+}
+#fun{
+	display: none;
 }

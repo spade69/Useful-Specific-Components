@@ -41,10 +41,13 @@ var createTag=(function(){
 		//获取数据，分别是tag和 textarea
 		this.getData=function(){
 			switch(input){ //input 可能是 tag 也可能是 textarea
-				case 'tag':
-					var val=this.input.value.match(/(^[^,\，]*)/)[0] ;//匹配这几个字符以外的
+				case input:
+					var val=this.input.value.match(/(^[^,，]*)/)[0] ;//匹配这几个字符以外的
+					
+					//var reg=/,$/gi; 
+					//var val=this.input.value.replace(reg,"");
 					break;
-				case 'txtarea':
+			
 				default:
 					var val=this.input.value.trim().split(/,|，|、|\s|\n|\t/);
 			}
@@ -53,7 +56,7 @@ var createTag=(function(){
 		
 		//增加标签元素
 		this.render=function(val){
-			if(val==''||val==','||val=='，'){
+			if(val===''||val===','||val==='，'){
 				return;
 			}
 			var wrap=document.createElement("button");
@@ -69,7 +72,8 @@ var createTag=(function(){
 		this.setNumber(0);
 		//初始化
 		this.button?this.init("buttonEvent"):this.init("keyEvent");
-		
+		//this.init("buttonEvent");
+	
 		
 	}
 	
@@ -99,6 +103,14 @@ var createTag=(function(){
 			this.setNumber(this.output.children.length);
 		},
 		
+		//防止默认行为
+		
+		preventDefault:function(e){
+			if(e.keycode=='13'){
+				e.preventDefault?e.preventDefault():e.returnValue=false;
+			}
+		},
+
 		/****
 		 根据情况选择不同的初始化方式
 		******/
@@ -114,15 +126,18 @@ var createTag=(function(){
 			this.output.addEventListener("mouseout",function(event){
 				event.target.textContent=event.target.textContent.replace(/删除:/,'');//把删除替换为''
 			});*/
+
+			//添加点击删除target的事件~
+			
 			this.output.addEventListener("click",function(event){
 				self.delData(event.target);
-			});
+			},false);
 			
 			switch(type){
 				case 'keyEvent':
 				self.input.addEventListener('keyup',function(event){
 					//正则表达式 字面量： /(,||\,)$/
-					if(event.keyCode===188||event.keyCode===32||event.keyCode===13){
+					if(event.keyCode==188||event.keyCode==32||event.keyCode=='13'){
 						//console.log(self.getData());
 						self.repeatData(self.getData())||self.render(self.getData());
 						self.input.value='';

@@ -10,8 +10,8 @@
 <body>
 <aside id="form_data_set">
 
-<form id="data_create">
-<fieldset class="formx" id="form_type" onchange="radioChange()">
+<form id="data_create" onkeypress="if(event.keyCode==13){return false;}">
+<fieldset class="formx" id="form_type">
 	<legend>表单类型</legend>
 	输入框<input type="radio" value="input" name="type" checked="checked"><br>
 	单选框<input type="radio" value="single" name="type"><br>
@@ -41,8 +41,7 @@
 
 <fieldset id="form_box" class='formx'>
 <legend>选项</legend>
-<input id="box_input" type="text" style="width:200px" placeholder="请用空格，逗号，回车来分隔选项">
-<span id="box_item"></span>
+<input id="tag" type="text" style="width:200px" placeholder="请用空格，逗号，回车来分隔选项">
 
 <div id="tags">
 
@@ -52,17 +51,17 @@
 
 <br>
 
-<fieldset id="rule" class="text" onchange="ruleradio()">
+<fieldset id="rule" class="text">
 	<legend>规则</legend>
-	<input id="word" type="radio" value="msg" name="rule">
+	<input id="word" type="radio" value="msg" name="rulex">
 	<label for="word">文字</label>
-	<input id="number" type="radio" value="number" name="rule">
+	<input id="number" type="radio" value="number" name="rulex">
 	<label for="number">数字</label>
-	<input id="email" type="radio" value="mail" name="rule">
+	<input id="email" type="radio" value="mail" name="rulex">
 	<label for="email">邮箱</label>
-	<input id="phone" type="radio" value="phone" name="rule">
+	<input id="phone" type="radio" value="phone" name="rulex">
 	<label for="phone">电话</label>
-	<input id="password" type="radio" value="passwd" name="rule">
+	<input id="password" type="radio" value="passwd" name="rulex">
 	<label for="password">密码</label>
 </fieldset>
 <br>
@@ -73,7 +72,11 @@
 	<input id="high" type="number" min="1" value="16" style="width:50px">
 </fieldset>
 
-	 <button id="btn_add" type="button">add</button>
+<div class="btnx">
+<button id="btn_add" type="button">add</button>
+</div>
+  <input type="text" class="hide">
+    <input type="text" class="hide">
 </form>
 
 </aside>
@@ -83,6 +86,7 @@
     <form id="result" class="style1">
         <button type="button" id="submit_form">提交</button>
         <input type="text" class="hide">
+
     </form>
 </div>
 

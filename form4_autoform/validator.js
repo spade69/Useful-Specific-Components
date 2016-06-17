@@ -1,26 +1,12 @@
-	/************
-在页面中添加多个表单
-要求:
-表单获得焦点时，下方显示表单填写规则
-表单失去焦点时校验表单内容
+/**
+ * Created by Jason on 16/6/17.
+ */
 
-校验结果正确时，表单边框显示绿色，并在下方显示验证通过的描述文字
-校验结果错误时，表单边框显示红色，并在下方显示验证错误的描述文字
+ //存放各个类型的验证函数
 
-点击提交按钮时，对页面中所有输入进行校验，校验结果显示方式同上。若所有表单校验通过，弹窗显示“提交成功”，否则显示“提交失败”
-校验规则：
-1.字符数为4~16位
-2.每个英文字母、数字、英文符号长度为1
-3.每个汉字，中文符号长度为2
-	
-	Author:Jason
-	Date:2016/06/06
-	*******/
 
-//实际测试JavaScript默认情况下中文和英文字符都是一个字符长度。 如： "日" 和 "a" 是一个字符长度
-//以下函数实现字符长度，中文占两个，英文占1个
 
-//
+//选择器
 $=function(e1){
 	return document.querySelector(e1);
 }
@@ -39,18 +25,7 @@ String.prototype.glen=function(){
 	return len;
 }
 
-// 跨浏览器兼容的工具函数
-function addEvent(element,type,handler) {
-    if(element.addEventListener) {
-        element.addEventListener(type, handler,false);
-    }
-    else if(element.attachEvent) {
-        element.attachEvent("on" + type, handler);
-    }
-    else {
-        element["on" + type] = handler;
-    }
-}
+
 
 //封装属性,这个构造函数意义不大,为什么封装的用不了？
 function vform(namex,passwd,xpass,mail,phone,btn){
