@@ -31,22 +31,35 @@ function addEvent(element,type,handler) {
     }
 }
 	
-var btn=$("#confirm"),
-	ctn=$("#cancel"),
+var ctn=$("#closeBtn"),
 	mask=$("#mask"),
 	pop=$("#pop"), //loginbox
-	login=$('#login');
+	login=$('#loginx');
+
+var mouseOffsetX=0;
+var mouseOffsetY=0;
+var isDraging=false;
+
+var mousePanel,mouseCtrl,mouseType;
+var moving=0,mouseStartX=0,mouseStartY=0;
 
 
-addEvent(mask,"click",function(){
+//点击mask 隐藏mask 和 pop
+function handle(){
 	mask.style.display="none";
 	pop.style.display="none";
-});
+
+}
+
+addEvent(mask,"click",handle);
+
 
 addEvent(login,"click",function(){
 	mask.style.display="block";
 	pop.style.display="block";
 });
+
+addEvent(login,"click",handle);
 
 //自动居中
 function autoCenter(ele){
@@ -66,20 +79,19 @@ function fillToBody(ele){
 	ele.style.height=document.body.clientHeight+"px";
 }
 
-var mouseOffsetX=0;
-var mouseOffsetY=0;
-var isDraging=false;
 
-addEvent(login,'mousedown',function(e){
+//添加按下事件到 pop浮出层
+addEvent(pop,'mousedown',function(e){
 	var e=e||window.event;
+	
 	//鼠标点击点离浮出层左边框的距离
-	mouseOffsetX=e.pageX-login.offsetLeft;
+	mouseOffsetX=e.pageX-pop.offsetLeft;
 	//鼠标点击点离浮出层右边框的距离
-	mouseOffsetY=e.pageY-login.offsetTop;
+	mouseOffsetY=e.pageY-pop.offsetTop;
 	isDraging=true;
 });
 
-//跟随选择的鼠标移动
+//跟随选择的鼠标移动,移动元素
 document.onmousemove=function(e){
 	var e=e||window.event;
 	mouseX=e.pageX;
@@ -88,6 +100,7 @@ document.onmousemove=function(e){
 	var moveX=0;
 	var moveY=0;
 
+//按下鼠标时为true
 	if(isDraging===true){
 		moveX=mouseX-mouseOffsetX;
 		moveY=mouseY-mouseOffsetY;
@@ -96,36 +109,35 @@ document.onmousemove=function(e){
 		var pageHeight=document.body.clientHeight;
 
 		//获取浮出层的宽高度
-		var loginWidth=login.offsetWidth;
-		var loginHeight=login.offsetHeight;
+		var loginWidth=pop.offsetWidth;
+		var loginHeight=pop.offsetHeight;
 
 		var maxMoveX=pageWidth-loginWidth;
 		var maxMoveY=pageHeight-loginHeight;
 
 		moveX=Math.min(maxMoveX,Math.max(0,moveX));
 		moveY=Math.min(maxMoveY,Math.max(0,moveY));
-		login.style.left=moveX+"px";
-		login.style.top=moveY+"px";
+		pop.style.left=moveX+"px";
+		pop.style.top=moveY+"px";
 	}
 }
 
-var mousePane1,mouseCtrl,mouseType;
-var moving=0,mouseStartX=0,mouseStartY=0;
 
 //event panel? ctrl? 这个是根据点击
 function onMouseDown(e,panel,ctrl,type){
 	var e=e||window.event;
-	    alert("fuck");
+	   // alert("fuck");
 	mouseStartX=e.pageX-ctrl.offsetLeft;
 	mouseStartY=e.pageY-ctrl.offsetTop;
 
-	mousePane1=panel;
+	mousePanel=panel;//十字移动那个
 	mouseCtrl=ctrl;
 	mouseType=type;
 
 	moving=setInterval(onMove,10);//隔10ms执行一次onMove
 }
 
+//制造一个 十字移动的图标，style在移动随着
 function onMove(){
 	if(moving){
 		var toX=mouseX-mouseStartX
@@ -134,18 +146,21 @@ function onMove(){
 		var maxToX=document.body.clientWidth-mousePanel.offsetLeft-10;
 		var maxToY=document.body.clientHeight-mousePanel.offsetTop-10;
 
-		toX=Math.min(maxToX,Math.max(toX,300));
-		toY=Math.min(maxToY,Math.max(toY,300));
-
+		toX=Math.min(maxToX,Math.max(toX,180));
+		toY=Math.min(maxToY,Math.max(toY,140));
+		isDraging=false;
 		switch(mouseType){
+			//仅拉右边的
 			case "r":
-				mouseCtrl.style.left=toX+"px";
+				mouseCtrl.style.left=toX+"px";// 加长的px数量+原来toX长度
 				mousePanel.style.width = toX + "px";
 				break;
+			//仅拉下方的
 			case "b":
                 mouseCtrl.style.top = toY + "px";
                 mousePanel.style.height = toY + "px";
                 break;
+             //拉对角的
             case "rb":
                 console.log(mouseCtrl.style.left);
                 mouseCtrl.style.left = toX-8 + "px";
@@ -157,7 +172,7 @@ function onMove(){
 	}
 }
 
-
+//按键向上时，draging恢复，且消除interval事件即onmove
 document.onmouseup=function(){
 	isDraging=false;
 	clearInterval(moving);
@@ -183,9 +198,11 @@ function resizable(ele){
 	panel.appendChild(bottomBox);
     panel.appendChild(rightBottomBox);
 
+
     addEvent(rightBox,"mousedown",function(e){
     	onMouseDown(e,panel,rightBox,"r");
     });
+
 
     addEvent(bottomBox,"mousedown",function(e){
     	onMouseDown(e,panel,bottomBox,"b");

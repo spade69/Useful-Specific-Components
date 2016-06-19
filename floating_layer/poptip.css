@@ -1,12 +1,16 @@
 /* poptip */
-.poptip{position: absolute;
+.poptip{
+
+    position: absolute;
+    width:200px;
+    height: 140px;
 	top: 50%;left:45%;
 	padding: 6px 10px 5px;*padding: 7px 10px 4px;
 	line-height: 16px;color: #DB7C22;font-size: 12px;
 	background-color: #FFFCEF;border: solid 1px #FFBB76;
 	border-radius: 2px;box-shadow: 0 0 3px #ddd;
-	z-index: 10001;
 	
+
 }
 
 .poptip-arrow{position: absolute;overflow: hidden;font-style: normal;font-family: simsun;font-size: 12px;text-shadow:0 0 2px #ccc;}

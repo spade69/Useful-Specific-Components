@@ -10,7 +10,7 @@ html,body{
     background-image:linear-gradient(to right,rgba(100,100,100,0.15),rgba(100,80,100,0.1),rgba(100,150,200,0.3)),
     linear-gradient(to right top,rgba(100,100,100,0.1),rgba(100,80,100,0),rgba(100,200,200,0.3));
     position:fixed;
-    z-index:1000;
+  
     top:0;
   
 }
@@ -30,4 +30,35 @@ header{
     color:#fff;
     font:1.5rem/3.125rem 'Microsoft YaHei';
     text-decoration:none;
+}
+
+.resizable-right{
+    position:absolute;
+    top:0;
+    right:0;
+    width:2px;
+    height:calc(100% - 10px);
+    background-color:#99f;
+    cursor:e-resize;
+    margin-right:-2px;
+}
+.resizable-bottom{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:calc(100% - 10px);
+    height:2px;
+    background-color:#99f;
+    cursor:s-resize;
+    margin-bottom:-2px;
+}
+.resizable-right-bottom{
+    position:absolute;
+    bottom:0;
+    right:0;
+    width:10px;
+    height:10px;
+    cursor:se-resize;
+    margin-right:-2px;
+    margin-bottom:-2px;
 }
