@@ -1,0 +1,10 @@
+	*{
+		padding: 0;
+		margin: 0;
+	}
+
+	table{
+		text-align: center;
+		border-collapse:collapse;
+		margin: 50px;
+	}
