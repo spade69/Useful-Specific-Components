@@ -277,7 +277,7 @@ exform.vmail(dmail);
 exform.vphone(dphone);
 exform.vbtn();
 
-var fuck=exform.check;
-alert(fuck[0]);
-fuck[0]=true;
-alert(exform.check[0]);
+//var fuck=exform.check;
+//alert(fuck[0]);
+//fuck[0]=true;
+//alert(exform.check[0]);
