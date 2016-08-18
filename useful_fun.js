@@ -35,3 +35,4 @@ function fillToBody(ele){
     ele.style.width=document.body.clientWidth+"px";
     ele.style.height=document.body.clientHeight+"px";
 }
+
