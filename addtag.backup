@@ -20,9 +20,9 @@
 	Author:Jason
 	Date:2016/06/02
 	*******/
-//var createTag=(function(){
-define(function(){	
-//_tag 这就算一个主函数了，里面都是控制程序的逻辑。
+var createTag=(function(){
+	
+	//_tag 这就算一个主函数了，里面都是控制程序的逻辑。
 	function _tag(input,output,button){
 		//private var
 		var numberx; //记录tag 个数
@@ -164,11 +164,8 @@ define(function(){
 		}
 	}; //prototype
 	
-	return {
-		_tag:_tag; //requireJS 返回的方式
-	}
-//})(); // 此处就算执行了这个函数 ，立即执行函数
-});	
+	return _tag;
+})(); // 此处就算执行了这个函数 ，立即执行函数
 
 
 
