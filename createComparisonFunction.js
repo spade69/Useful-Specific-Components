@@ -7,21 +7,28 @@
  *Author:Jason
  *Date:2016/05/23
 ****************************/
-function createComparsionFunction(propertyName){
-	
-	return function(object1,object2){
-		var value1=object1[propertyName];
-		var value2=object2[propertyName];
-		
-		if(value1<value2){
-			return -1;
-		}else if(value1>value2){
-			return 1;
+//requireJS  AMD Module 
+
+define(function(){
+	var compare=function(propertyName){
+		return function(object1,object2){
+			var value1=object1[propertyName];
+			var value2=object2[propertyName];
 			
-		}else{
-			return 0;
-		}
+			if(value1<value2){
+				return -1;
+			}else if(value1>value2){
+				return 1;
+				
+			}else{
+				return 0;
+			}
+		};
+		
 	};
-}
+	return{
+			compare:compare
+	};
+});
 
 
