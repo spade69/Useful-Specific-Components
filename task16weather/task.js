@@ -6,20 +6,24 @@
  *    "上海": 40
  * };
  */
+
+
 var aqiData =new Array();
 
 /**
  * 从用户输入中获取数据，向aqiData中增加一条数据
  * 然后渲染aqi-list列表，增加新增的数据
  */
-function addAqiData() {
-	var in_city=document.getElementById("aqi-city-input");
-	var in_weather=document.getElementById("aqi-value-input");
+ //可以define为模块,html 对应Label  name 和 value
+function addAqiData(name,value) {
+	var in_city=document.getElementById(name);
+	var in_weather=document.getElementById(value);
 	var cityname=in_city.value;
 	var weather=in_weather.value;
 	
+
 	if(!cityname.match(/^[A-Za-z\u4E00-\u9FA5]+$/)){//正则表达式
-		alert("城市名字必须为中英文字符");
+		alert("名字必须为中英文字符");
 		return;
 	}
 	if(!weather.match(/^\d+$/)){
@@ -36,8 +40,9 @@ function addAqiData() {
 /**
  * 渲染aqi-table表格
  */
-function renderAqiList() {
-	var aqi_table=document.getElementById("aqi-table");
+ //渲染表格，怎么抽象出一个通用的刷新表格模块？
+function renderAqiList(table) {
+	var aqi_table=document.getElementById(table);
 	//var tr=document.getElementsByTagName("tr");
 	for(var i=aqi_table.childNodes.length-1;i>0;i--){
 		aqi_table.removeChild(aqi_table.childNodes[i]);
@@ -45,11 +50,10 @@ function renderAqiList() {
 	
 	
 	var tr_intial=document.createElement("tr");
-	tr_intial.innerHTML="<td>城市</td>"+"<td>空气质量</td>"+"<td>操作</td>";
+	var items="<td>城市</td>"+"<td>空气质量</td>"+"<td>操作</td>";
+	tr_intial.innerHTML=items;
 	aqi_table.appendChild(tr_intial);
 	
-	
-	var items="<td>城市</td>"+"<td>空气质量</td>"+"<td>操作</td>";
 	
 	for(var city in aqiData){
 		items+="<tr><td>"+city+"</td>"+"<td>"+aqiData[city]+"</td>"+"<td><button>删除</button></td>";
@@ -64,9 +68,9 @@ function renderAqiList() {
  * 点击add-btn时的处理逻辑
  * 获取用户输入，更新数据，并进行页面呈现的更新
  */
-function addBtnHandle() {
-  addAqiData();
-  renderAqiList();
+function addBtnHandle(name,value,table) {
+  addAqiData(name,value);
+  renderAqiList(table);
 }
 
 /**
@@ -85,12 +89,12 @@ function addBtnHandle() {
  
  
  */
-function delBtnHandle() {
+ //delBtnHandle 依赖  EventUtil, table需要符合一定的格式,必须是<tr>包括一行的内容
+function delBtnHandle(btn,tablex) {
   // do sth.
-	var del=document.getElementsByTagName("button");
-	var table=document.getElementById("aqi-table");
+	var del=document.getElementsByTagName(btn);
+	var table=document.getElementById(tablex);
 	
-
 	
 	//表格添加一个事件调用editcell函数。 editcell函数就判断事件
 	EventUtil.addHandler(table,"click",function(event){
@@ -109,7 +113,7 @@ function delBtnHandle() {
 					//alert("yes");
 					//aqiData[i].splice(0,3);
 					delete aqiData[city];
-					renderAqiList();
+					renderAqiList(tablex);
 				}
 			}
 			
@@ -118,7 +122,7 @@ function delBtnHandle() {
 	}
 	);
 	
-	renderAqiList();
+	renderAqiList(tablex);
 }
 
 function init() {
@@ -145,11 +149,12 @@ function init() {
 	var add=document.getElementById("add-btn");
 	var mydiv=document.getElementById("mydiv");
 	//add.onclick=addBtnHandle;// 用代理?
-	add.addEventListener("click",addBtnHandle,false);
+	add.addEventListener("click",function(){
+		addBtnHandle("aqi-city-input","aqi-value-input","aqi-table")},false);
 	
 	
   // 想办法给aqi-table中的所有删除按钮绑定事件，触发delBtnHandle函数
-	delBtnHandle();
+	delBtnHandle("button","aqi-table");
 }
 
 init();

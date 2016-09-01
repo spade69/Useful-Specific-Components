@@ -16,14 +16,22 @@
  *Author:Jason
  *Date:2016/05/23
 ****************************/
-function sortAqiData(data,i) {
-	
-	data.sort(function(a,b){
-	if(a.length>1&&b.length>1){
-	var tmp=a[i]-b[i];
-	return tmp;});
-	}
-	else{
-		return a-b;
-	}
-}
+
+define(function(){
+	var sortAqiData=function(data,i) {
+		
+		data.sort(function(a,b){
+			if(a.length>1&&b.length>1){
+				var tmp=a[i]-b[i];
+				return tmp;
+			}
+		
+			else{
+				return a-b;
+			}
+		});
+	};
+	return{
+		sortAqiData:sortAqiData
+	};
+});
