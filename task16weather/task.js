@@ -125,7 +125,7 @@ function delBtnHandle(btn,tablex) {
 	renderAqiList(tablex);
 }
 
-function init() {
+var init=(function(){
 	var aqi_table=document.getElementById("aqi-table");
 	var a_tr=document.createElement("tr");
 	var td1=document.createElement("td");
@@ -155,6 +155,5 @@ function init() {
 	
   // 想办法给aqi-table中的所有删除按钮绑定事件，触发delBtnHandle函数
 	delBtnHandle("button","aqi-table");
-}
+})();
 
-init();

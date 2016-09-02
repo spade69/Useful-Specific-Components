@@ -36,3 +36,16 @@ function fillToBody(ele){
     ele.style.height=document.body.clientHeight+"px";
 }
 
+//实现在String的原型里面,即往原型增加了一个新的共享方法
+String.prototype.glen=function(){
+    var len=0;
+    for(var i=0;i<this.length;i++){
+        if(this.charCodeAt(i)>127||this.charCodeAt(i)==94){
+            len+=2;
+        }
+        else{
+            len++;
+        }
+    }
+    return len;
+}

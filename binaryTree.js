@@ -3,15 +3,16 @@
 	Date:2016/06/02
 	*******/ 
 	//构造函数
-	function BinarySearchTree(){
+define(function(){
+	var BinarySearchTree=function(){
 		/**
 		*@property _root
 		*@type Object
 		*@private
 		*/
 		this._root=null;
-	}
-	
+		console.log('constructor running');
+	}	
 	//原型定义一系列的方法
 	//原型~
 	BinarySearchTree.prototype={
@@ -134,3 +135,7 @@
 			return this.toArray().toString();//toString()是一个js内置的方法
 		}
 	};
+	return{
+		BinarySearchTree:BinarySearchTree
+	}
+});

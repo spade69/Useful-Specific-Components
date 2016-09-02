@@ -23,22 +23,18 @@
 			div.removeChild(div.childNodes[k]);
 		}
 		
-		
-		
 		for(var i=0;i<arr.length;i++){
 			var bt=document.createElement("button");
 			bt.setAttribute("id",i);
 			var bt_txt=document.createTextNode(arr[i]);
 			bt.appendChild(bt_txt);
 			div.appendChild(bt);
-			
+
 			//var parseInt(arr[i]);
 			//alert(typeof arr[i]);
 			//var tmp=((typeof arr[i])=="Number")?arr[i]*3:1;
-			
-			var tmp=arr[i]*3;// 是字符串？
-			
-			bt.style.height=tmp+"px";//设置元素的高度
+			var tmp=arr[i]*3;//Number类型
+			bt.style.height=tmp+"px";//自动转换类型为字符串，设置元素的高度
 		}
 		
 		
