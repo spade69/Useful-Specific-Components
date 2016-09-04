@@ -20,10 +20,11 @@
 	Author:Jason
 	Date:2016/06/02
 	*******/
-//var createTag=(function(){
+	//* @param {input,output,button} - input输入标签的id  output 下方输出显示的div的id
+	//* @return {Boolean} - 数据是否重复
 define(function(){	
 //_tag 这就算一个主函数了，里面都是控制程序的逻辑。
-	function _tag(input,output,button){
+	function CreateTag(input,output,button){
 		//private var
 		var numberx; //记录tag 个数
 		//privilege method
@@ -67,21 +68,16 @@ define(function(){
 			numberx++;
 		};
 		
-		//以下相当于调用了
-		//构造器
-		this.setNumber(0);
 		//初始化
-		this.button?this.init("buttonEvent"):this.init("keyEvent");
-		//this.init("buttonEvent");
+		this.setNumber(0);
 	
-		
 	}
 	
 	/**************
 	构造
 	*原型方法
 	********************************/
-	_tag.prototype={
+	CreateTag.prototype={
 	
 		//检测输入数据是否重复
 		// * @param {String} - data 输入的数据
@@ -111,7 +107,7 @@ define(function(){
 			}
 		},
 
-		/****
+		/***********
 		 根据情况选择不同的初始化方式
 		******/
 		
@@ -128,12 +124,12 @@ define(function(){
 			});*/
 
 			//添加点击删除target的事件~
-			
 			this.output.addEventListener("click",function(event){
 				self.delData(event.target);
 			},false);
 			
 			switch(type){
+				//检测键盘来增加tag
 				case 'keyEvent':
 				self.input.addEventListener('keyup',function(event){
 					//正则表达式 字面量： /(,||\,)$/
@@ -148,15 +144,17 @@ define(function(){
 					}
 				});
 				break;
-				
+				//本来用按键一次性加入所有tag~
+				//现在改成每次按键只是加入一个tag！
 				case 'buttonEvent':
 				self.button.addEventListener('click',function(){
-					for(var i=0;i<self.getData().length;i++){
-						self.repeatData(self.getData()[i])||self.render(self.getData()[i]);
+					//for(var i=0;i<self.getData().length;i++){
+						//利用了|| 的只判断前面的逻辑值，一旦为真就不检查后面了。
+						self.repeatData(self.getData())||self.render(self.getData());
 						if(self.getNumber()>10){
 							self.delData(self.output.firstChild);
 						}
-					}
+					//}
 				});
 				break;
 			}
@@ -165,10 +163,15 @@ define(function(){
 	}; //prototype
 	
 	return {
-		_tag:_tag; //requireJS 返回的方式
+		CreateTag:CreateTag //requireJS 返回的方式
 	}
 //})(); // 此处就算执行了这个函数 ，立即执行函数
 });	
 
 
-
+/*
+	//初始化
+		//this.button?this.init("buttonEvent"):this.init("keyEvent");
+		this.init("buttonEvent");
+	
+*/
