@@ -1,10 +1,10 @@
 	//刷新队列button
 	//AMD requirejs 模块
 //无依赖模块  refreshx 是 id？ 可以加或不加，不加就是默认为文件名
-	define(function(refresh){
+	define("refresh",function(refresh){
 		return function(id,arr){
 		var fdiv=document.getElementById(id);
-		// alert(fdiv);
+		//alert(fdiv);
 		//刷新操作！删除所有childnode！
 		if(!fdiv.hasChildNodes())
 			return;

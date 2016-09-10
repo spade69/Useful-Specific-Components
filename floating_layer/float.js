@@ -48,7 +48,6 @@ var moving=0,mouseStartX=0,mouseStartY=0;
 function handle(){
 	mask.style.display="none";
 	pop.style.display="none";
-
 }
 
 addEvent(mask,"click",handle);
